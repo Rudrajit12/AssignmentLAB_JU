@@ -31,19 +31,24 @@ int main()
 void insertion_sort(int array[],int size)
 {
 	int i,j,temp=0;
-	//Count variable for counting the number of comparisons
-	int count=0;
-	for(i=0;i<size;i++)
+	//comp variable for counting the number of comparisons and no_of_swap for counting the swap.
+	int comp=0,no_of_swap=0;
+	for(i=1;i<size;i++)
 	{
 		temp=array[i];
 		j=i-1;
+		//We check or compare the values whether the loop condition satisfies or not.
+		comp++;
 		while(temp < array[j] && j>=0)
 		{
-			count++;
 			array[j+1]=array[j];
+			no_of_swap++;
 			j--;
+			//We check or compare once again that the loop condition satisfies or not.
+			comp++;
 		}
 		array[j+1]=temp;
 	}
-	printf("The number of comparisons occuring are %d \n",count);
+	printf("The number of comparisons occuring are %d \n",comp);
+	printf("The number of swaps %d \n",no_of_swap);
 }
