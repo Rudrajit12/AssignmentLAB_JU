@@ -10,11 +10,11 @@ void swap(float *a,float *b)
 	*b = temp;
 }
 
-void bubblesort(float arr[],int n)
+void bubblesort(float arr[],int size)
 {
 	int i,j;
-	for (i=0;i<n-1;i++)
-		for(j=0;j<n-i-1;j++)
+	for (i=0;i<size-1;i++)
+		for(j=0;j<size-i-1;j++)
 		{
 			if (arr[j]>arr[j+1])
 				swap(&arr[j],&arr[j+1]);
@@ -31,9 +31,20 @@ void print(float arr[],int size)
 
 int main()
 {
-	float arr[]={5.2,1.5,0.6,8.5,6.4};
-	bubblesort(arr,5);
+	float arr[10];
+	int size,i;
+	printf("Enter the number of elements");
+	scanf("%d",&size);
+	srand(time(0));
+	printf("Enter the array");
+	for(i=0;i<size;i++)
+	{
+		arr[i]=rand()%100;
+		printf(" %f ",arr[i]);
+	}
+	printf("\n");
+	bubblesort(arr,size);
 	printf("The sorted array is: ");
-	print(arr,5);
+	print(arr,size);
 	return 0;
 }
