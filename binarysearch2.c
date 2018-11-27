@@ -3,7 +3,7 @@
 
 int main()
 {
-	int array[10],size,beg,mid,end;
+	int array[10],size;
 	int i,key,result;
 	printf("Enter the number of elements");
 	scanf("%d",&size);
@@ -15,10 +15,7 @@ int main()
 	printf("Enter the value to be searched \n");
 	scanf("%d",&key);
 	result=binarysearch(array,0,size-1,key);
-	/*if(result==-1)
-		printf("Value not present in array");
-	else*/
-	printf("Value present in array in position %d",result);
+	(result == 1)?printf("Value not found in array"):printf("Value found in position %d",result);
 }
 
 int binarysearch(int array[],int beg,int end,int key)
@@ -29,9 +26,9 @@ int binarysearch(int array[],int beg,int end,int key)
 		if(array[mid]==key)
 			return mid;
 		if(array[mid]>key)
-			return(array,beg,mid-1,key);
+			return binarysearch(array,beg,mid-1,key);
 		else
-			return(array,mid+1,end,key);
+			return binarysearch(array,mid+1,end,key);
 	}
 	return -1;
 }
